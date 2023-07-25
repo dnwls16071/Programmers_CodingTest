@@ -7,14 +7,17 @@ def solution(numbers, target):
     while queue:
         sequence, Sum = queue.popleft()
     
-        if sequence >= len(numbers):
+        # ex. len(numbers) = 5, sequence = 6 ( X )
+        if sequence > len(numbers):
             break
-
-        queue.append((sequence+1, Sum + numbers[sequence]))
-        queue.append((sequence+1, Sum - numbers[sequence]))
-    
-    result = list(queue)
-    for i in result:
-        if i[1] == target:
+        
+        # ex. len(numbers) = 5, sequence = 5
+        elif sequence == len(numbers) and Sum == target:
             answer += 1
+
+        if sequence == len(numbers):
+            continue
+        else:
+            queue.append((sequence+1, Sum + numbers[sequence]))
+            queue.append((sequence+1, Sum - numbers[sequence]))
     return answer
