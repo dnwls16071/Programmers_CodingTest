@@ -3,7 +3,8 @@ def solution(N, stages):
     # stages : 게임을 이용하는 사용자가 현재 멈춰 있는 스테이지의 번호가 담긴 배열
     answer = []
     users = len(stages)   # 전체 참가자 수
-    stage_count = [0] * (N + 2)
+    stage_count = [0] * (N + 2) # 전체 스테이지의 개수 > 런타임에러가 발생한 이유
+    # 각 스테이지에 도달한 사람의 수
     for i in stages:
         stage_count[i] += 1
     
