@@ -24,11 +24,11 @@ from collections import deque, Counter
 
 def solution(numbers):
     # 소수 판정 알고리즘
-    def is_prime(num):
-        if num < 2:
+    def is_prime(x):
+        if x == 0 or x == 1:
             return False
-        for i in range(2, int(num**0.5) + 1):
-            if num % i == 0:
+        for i in range(2, int(x**0.5) + 1):
+            if x % i == 0:
                 return False
         return True
     
@@ -60,3 +60,38 @@ def solution(numbers):
     remaining = [[int(k), v] for k, v in Counter(numbers).items()]
     result = BFS(0, 0, remaining)
     return len(result)  # set의 길이를 반환하도록 수정
+
+#3. DFS 완전 탐색을 이용한 방법
+# 소수 판정 알고리즘
+def solution(numbers):
+    global prime_number
+    prime_number = []
+    visited = [False] * len(numbers)
+    result = DFS(numbers, "", 0, visited)
+    return len(result)
+    
+def is_prime(x):
+    if x == 0 or x == 1:
+        return False
+    for i in range(2, int(x**0.5)+1):
+        if x % i == 0:
+            return False
+    return True
+
+def DFS(numbers, curr_num, length, visited):
+    global prime_number
+    # 길이가 numbers 길이 이하이면서 현재 숫자가 소수이면서 현재 숫자가 소수 리스트에 들어있지 않은 경우라면?
+    # 중복을 제거해야하므로
+    # 테스트케이스 2번 → "011" → 11, 101이 중복해서 나오는 경우를 포함하게 된다면 6이라는 WA가 나오게 됨
+    if 1 <= length <= len(numbers) and is_prime(int(curr_num)) and int(curr_num) not in prime_number:
+        prime_number.append(int(curr_num))
+            
+    # 백트래킹
+    for i in range(len(numbers)):
+        if not visited[i]:
+            # 방문 여부 True
+            visited[i] = True
+            DFS(numbers, curr_num + numbers[i], length+1, visited)
+            # 방문 여부 False
+            visited[i] = False
+    return prime_number
