@@ -8,9 +8,9 @@ def solution(N, number):
     if N == number:
         return 1
 
-    for i in range(2, 9):  # 2부터 8까지 반복
+    for i in range(2, 10):  # 2부터 9까지 반복
         nums = [int(str(N) * i)]  # 숫자를 이어붙여서 만들 수 있는 수
-        for j in range(1, 9):  # 숫자를 j개 사용한 경우와 i-j개 사용한 경우를 고려
+        for j in range(1, i // 2 + 1):  # 숫자를 j개 사용한 경우와 i-j개 사용한 경우를 고려
             for k in dp[j]:
                 for m in dp[i - j]:
                     nums.append(k + m)
