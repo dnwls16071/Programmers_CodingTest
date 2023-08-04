@@ -16,10 +16,10 @@ def solution(number, k):
     return ''.join(map(str, stack))
 
 # 테스트케이스 "1924", k = 2
-#1 stack = [1]
-#2 stack = [9]
-#3 stack = [9, 2]
-#4 stack = [9, 4] → 따라서, "94"
+#1 stack = [1]                  → idx = 2
+#2 stack = [9]                  → idx = 1
+#3 stack = [9, 2]               → idx = 1
+#4 stack = [9, 4] → 따라서, "94" → idx = 0
 
-# 테스트케이스 "54321", k = 1
+# 테스트케이스 "54321", k = 1 
 # result : "5432"
