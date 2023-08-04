@@ -4,7 +4,6 @@ def solution(numbers):
     # 문자열 연산을 위해 문자로 취급
     arr = list(map(str, numbers))
     
-    # 마지막 숫자를 numbers 배열의 최댓값의 길이만큼 동일하게 맞춰줌
     # numbers의 길이는 1 ≤ len(numbers) ≤ 100,000
     # numbers의 원소는 0 ≤ element ≤ 1,000
     result = sorted(arr, key = lambda x : x * 3, reverse=True)
