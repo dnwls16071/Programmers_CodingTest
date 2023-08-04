@@ -1,4 +1,6 @@
 # 힙 자료구조는 자동 정렬을 보장함
+# try ~ except 예외처리를 사용
+
 import heapq
 
 def solution(scoville, K):
@@ -6,6 +8,7 @@ def solution(scoville, K):
     heapq.heapify(scoville)
     
     while True:
+        # 첫 원소의 스코빌 지수가 K이상이면 그 이후의 원소는 다 K를 넘는 것이므로
         if scoville[0] >= K:
             break
         
@@ -14,6 +17,7 @@ def solution(scoville, K):
             b = heapq.heappop(scoville)
             heapq.heappush(scoville, a + b * 2)
             answer += 1
+        # 아래 주석의 경우 런타임에러(정확하게 발생하는 에러는 인덱스에러)
         except IndexError:
             return -1
     return answer
