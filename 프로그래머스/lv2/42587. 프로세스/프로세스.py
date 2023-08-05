@@ -33,3 +33,17 @@ def solution(priorities, location):
 # 각각의 프로세스 [A, B, C, D, E, F]가 몇 번째로 실행이 되는 것인가?
 
 # C(1), D(2), E(3), F(4), A(5), B(6)
+
+# python any함수 → any 함수는 인자로 받은 요소 중 하나라도 참이 있으면 True를 반환하고, 모든 요소가 거짓이면 False를 반환한다.
+def any(iterable):
+    for element in iterable:
+    	if element:
+        	return True
+    return False
+
+# python all함수 → all 함수는 인자로 받은 모든 요소가 참이어야 True를 반환하고 하나라도 거짓이면 False를 반환한다.
+def all(iterable):
+	for element in iterable:
+    	if not element:
+        	return False
+    return True
