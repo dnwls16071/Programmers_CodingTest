@@ -40,12 +40,12 @@ def solution(priorities, location):
 def any(iterable):
     for element in iterable:
     	if element:
-        	return True
+            return True
     return False
 
 # python all함수 → all 함수는 인자로 받은 모든 요소가 참이어야 True를 반환하고 하나라도 거짓이면 False를 반환한다.
 def all(iterable):
-	for element in iterable:
+    for element in iterable:
     	if not element:
-        	return False
+            return False
     return True
