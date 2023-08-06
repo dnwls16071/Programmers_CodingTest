@@ -1,32 +1,34 @@
-# # 하나의 힙으로 문제를 해결하는 방법
-# import heapq
+# 하나의 힙으로 문제를 해결하는 방법
+import heapq
 
-# def solution(operations):
-#     queue = []
-#     heapq.heapify(queue)
+def solution(operations):
+    queue = []
+    heapq.heapify(queue)
     
-#     for op in operations:
-#         op = list(op.split(" "))
-#         if op[0] == "I":
-#             heapq.heappush(queue, int(op[1]))
-#         # 최댓값을 삭제하는 명령
-#         elif op[0] == "D" and int(op[1]) == 1:
-#             if len(queue) != 0:
-#                 Max_element = max(queue)
-#                 queue.remove(Max_element)
-#         # 최솟값을 삭제하는 명령
-#         elif op[0] == "D" and int(op[1]) == -1:
-#             if len(queue) != 0:
-#                 heapq.heappop(queue)
+    for op in operations:
+        op = list(op.split(" "))
+        if op[0] == "I":
+            heapq.heappush(queue, int(op[1]))
+        # 최댓값을 삭제하는 명령
+        elif op[0] == "D" and int(op[1]) == 1:
+            if len(queue) != 0:
+                Max_element = max(queue)
+                queue.remove(Max_element)
+        # 최솟값을 삭제하는 명령
+        elif op[0] == "D" and int(op[1]) == -1:
+            if len(queue) != 0:
+                heapq.heappop(queue)
     
-#     if queue:
-#         Max_value = max(queue)
-#         Min_value = min(queue)
-#         return [Max_value, Min_value]
-#     else:
-#         return [0, 0]
+    if queue:
+        Max_value = max(queue)
+        Min_value = min(queue)
+        return [Max_value, Min_value]
+    else:
+        return [0, 0]
 
 # 두 개의 힙으로 우선순위 큐를 구현해 문제를 해결하는 방법
+# I의 경우 두 힙에 모두 값을 넣어준다. 이 때, 최소힙은 그대로 넣고 최대힙은 부호를 반전시켜 넣어야 구현이 가능하다.
+# D의 경우 두 힙에서 동일한 값을 빼주어야 하는데 아래와 같이 작성
 import heapq
 
 def solution(operations):
@@ -49,9 +51,3 @@ def solution(operations):
         return [-heapq.heappop(maxH), heapq.heappop(minH)]
     else:
         return [0, 0]
-    
-    
-    # 테스트케이스1 작동 과정
-    # min_H : [123]
-    # max_H : [123]
-    # actual_array : [] → [0, 0]
