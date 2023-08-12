@@ -1,7 +1,9 @@
 from collections import deque
 
 def solution(queue1, queue2):
-    limit = len(queue1) * 3
+    # 연산 횟수 : 300,000 × 300,000 = 9,000,000,000(90억)의 횟수를 돌리면 시간초과가 발생함
+    # 모든 경우를 다 확인하지않고 만약 제한 길이를 넘어서게 된다면 -1을 리턴하는 방법을 생각해내야함
+    limit = len(queue1) * 3                     # 큐의 길이 제한
     answer = 0
     queue1 = deque(queue1)
     queue2 = deque(queue2)
