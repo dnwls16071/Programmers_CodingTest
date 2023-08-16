@@ -1,3 +1,7 @@
+# 대소문자 구분없이 사전순 정렬을 했는가?
+# 숫자부분의 길이가 5가 넘어가면 나머지 부분은 Tail로 처리했는가?
+# Tail로 처리를 하다가, 다시 숫자가 나왔을때도 그대로 Tail로 처리되는가?
+
 def solution(files):
     answer = []
     for file in files:
@@ -7,7 +11,7 @@ def solution(files):
         flag = False
         for i in range(len(file)):
             # 숫자인 경우 : NUMBER → HEAD에 들어가지 않음
-            if file[i].isdigit():
+            if file[i].isdigit() and len(number) <= 5:
                 number += file[i]
                 flag = True
             # flag : False인 경우 
