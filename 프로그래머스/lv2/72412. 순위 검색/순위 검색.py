@@ -6,7 +6,7 @@ from bisect import bisect_left, bisect_right
 
 def solution(info, query):
     result = []
-    # Keyerror 방지
+    # 런타임에러 방지
     comb_dict = defaultdict(int)
     
     for i in range(len(info)):
@@ -21,15 +21,14 @@ def solution(info, query):
                 else:
                     comb_dict[comb_temp].append(comb_value)
     
+    # 조합에 해당하는 점수를 오름차순으로 정렬 → 이진 탐색을 이용하기 위해서
     for item in comb_dict:
         comb_dict[item].sort()
-        
-    for key in comb_dict:
-        comb_dict[key] = sorted(comb_dict[key])  # Sort values in the dictionary
     
     for q in query:
         q = q.replace("and", "")
         q = list(q.split())
+        # 하이픈(-)은 해당 조건을 고려하지 않는 것 → 특정 값을 나타내는 것이 아니므로 전부 제거
         while '-' in q:     
             q.remove('-')
         q_info = q[:-1]
@@ -40,5 +39,6 @@ def solution(info, query):
             bisect_left_value_index = bisect_left(comb_dict[query_key], q_score)
             result.append(len(comb_dict[query_key]) - bisect_left_value_index)
         else:
+            # [조건]을 만족하지 않으므로 결국 0을 추가
             result.append(0)
     return result
