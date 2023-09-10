@@ -1,5 +1,4 @@
-# 한 문자의 최대 빈도는 4, 전체 모음 문자의 개수는 5개, 따라서 중복순열로 해결해도 괜찮지않을까?
-# 재귀함수를 이용한 풀이도 가능할 것 같은데 조금 더 고민해볼것
+# 중복순열로 해결하는 방법
 from itertools import product
 
 def solution(word):
@@ -14,3 +13,23 @@ def solution(word):
         if ans == word:
             return result + 1
         result += 1
+        
+# 재귀 알고리즘
+def recursive(answer, step, p):
+    arr = ['A','E','I','O','U']
+    if step == 6:
+        return
+    if p != "":
+        answer.append(p)
+    for i in range(len(arr)):
+        recursive(answer, step+1, ''.join([p, arr[i]]))
+    
+def solution(word):
+    rank = 0
+    answer = []
+    recursive(answer, rank, "")
+    for i in range(len(answer)):
+        if answer[i] == word:
+            rank = i + 1
+            break
+    return rank
