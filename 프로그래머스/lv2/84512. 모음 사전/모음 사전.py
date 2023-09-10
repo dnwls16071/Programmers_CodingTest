@@ -15,6 +15,9 @@ def solution(word):
         result += 1
         
 # 재귀 알고리즘
+import sys
+sys.setrecursionlimit(10**6)
+
 def recursive(answer, step, p):
     arr = ['A','E','I','O','U']
     if step == 6:
