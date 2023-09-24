@@ -10,6 +10,7 @@ def solution(n, edge):
     res = BFS(1, graph, visited)
     Max = max(visited)
     cnt = 0
+    # 출발점인 1번 노드는 제외한 나머지 노드를 대상으로 1번 노드로부터 가장 멀리 떨어진 노드의 개수를 확인
     for i in range(2, len(visited)):
         if res[i] == Max:
             cnt += 1
