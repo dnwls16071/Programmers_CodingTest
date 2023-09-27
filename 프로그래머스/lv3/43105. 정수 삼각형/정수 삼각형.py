@@ -1,3 +1,6 @@
+# 왼쪽, 오른쪽 가장자리 변부터 채워넣기
+# 삼각형의 안쪽 부분을 점화식을 세워 거쳐간 숫자의 최댓값을 찾도록 작성
+
 def solution(triangle):
     height = len(triangle)
     dp = [[0] * height for _ in range(height)]
