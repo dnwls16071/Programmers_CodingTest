@@ -3,7 +3,7 @@ def solution(prices):
     for i in range(len(prices)-1):
         time = 0
         for j in range(i, len(prices)-1):
-            # 가격이 같거나
+            # 가격이 같거나 큰 경우
             if prices[i] <= prices[j]:
                 time += 1
             else:
